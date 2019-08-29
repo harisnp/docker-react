@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t haris/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run haris/docker-react npm run test -- --coverage
