@@ -9,5 +9,17 @@ script:
   - docker run -e CI=true haris/docker-react npm run test
   # - docker run haris/docker-react npm run test -- --coverage
 
-# deploy:
-#   provider: elasticbeanstalk
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-west-1"
+  app: "docker-react"
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-eu-west-1-510778827030"
+  bucket_path: "docker-react"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
+
+  # DockerReact-env.jvqqfcdpki.eu-west-1.elasticbeanstalk.com
